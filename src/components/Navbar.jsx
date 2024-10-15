@@ -15,6 +15,14 @@ export const Navbar = () => {
 
     navigate("/");
   };
+  const handleGetTaskifyClick = () => {
+    if (user) {
+      navigate("/boards"); // Если залогинен, перенаправляем на BoardsPage
+    } else {
+      navigate("/login"); // Если не залогинен, перенаправляем на LoginPage
+    }
+  
+  };
 
   return (
     <div className="font-trello fixed top-0 p-4 w-full border-b shadow-sm bg-white">
@@ -23,7 +31,7 @@ export const Navbar = () => {
         <Conditional condition={!user}>
           <div className="flex space-x-4">
             <LinkButton to="/login">Login</LinkButton>
-            <Button>Get Taskify for free</Button>
+            <Button onClick={handleGetTaskifyClick}>Get Taskify for free</Button>
           </div>
         </Conditional>
         <Conditional condition={user}>
